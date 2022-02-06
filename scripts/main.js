@@ -85,7 +85,7 @@ function callAPI(long, lat) {
 
         // Icone dynamique:
 
-        if (heureActuelle >= 6 && heureActuelle < 21) {
+        if (heureActuelle >= 6 && heureActuelle < 18) {
             imgIcon.src = `assets/day/${resultsAPI.current.weather[0].icon}.svg`;
         } else {
             imgIcon.src = `assets/night/${resultsAPI.current.weather[0].icon}.svg`;
