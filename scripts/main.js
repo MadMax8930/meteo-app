@@ -1,3 +1,5 @@
+import tabJourEnOrdre from "./utility/gestionTemps.js";
+
 // API: openweathermap.org
 
 const API_KEY = 'e4d50bc9123c2306a553377e8fe05b98';
@@ -9,6 +11,9 @@ const localisation = document.querySelector('.localisation');
 
 const heure = document.querySelectorAll('.heure-nom-prevision');
 const tempPourH = document.querySelectorAll('.heure-prevision-valeur');
+
+const jour = document.querySelectorAll('.jour-prevision-nom');
+const tempPourJ = document.querySelectorAll('.jour-prevision-temp');
 
 if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -58,6 +63,19 @@ function callAPI(long, lat) {
 
             tempPourH[j].innerText = 
             `${Math.trunc(resultsAPI.hourly[j * 3].temp)}°`;
+        }
+
+        // Les trois premieres lettres des jours du array tabJour:
+
+        for(let k = 0; k < tabJourEnOrdre.length; k++) {
+            jour[k].innerText = tabJourEnOrdre[k].slice(0,3);
+        }
+
+        // Les temperatures par jour(a 3 lettres):
+
+        for(let m = 0; m < tempPourJ.length; m++) {
+            tempPourJ[m].innerText =
+            `${Math.trunc(resultsAPI.daily[m + 1].temp.day)}°`; 
         }
     })
 }

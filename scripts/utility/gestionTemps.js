@@ -15,5 +15,7 @@ jourActuel = jourActuel.charAt(0).toUpperCase() + jourActuel.slice(1);
 // 1ere lettre de dimanch Maj (D) + on rajoute le rest du mot (imanche)
 
 let tabJourEnOrdre = joursSemaine.slice(joursSemaine.indexOf(jourActuel)).concat(joursSemaine.slice(0, joursSemaine.indexOf(jourActuel)));
-console.log(tabJourEnOrdre);
+// console.log(tabJourEnOrdre);
 // on coupe une partie du tableau et retourner un new tab avec la partie coupée
+
+export default tabJourEnOrdre;
