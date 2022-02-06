@@ -5,15 +5,20 @@ import tabJourEnOrdre from "./utility/gestionTemps.js";
 const API_KEY = 'e4d50bc9123c2306a553377e8fe05b98';
 let resultsAPI;
 
+// HTML Elements
+const loadingContainer = document.querySelector('.overlay-loading');
+
+const imgIcon = document.querySelector('.logo-meteo');
 const temps = document.querySelector('.temps');
 const temperature = document.querySelector('.temperature');
 const localisation = document.querySelector('.localisation');
 
 const heure = document.querySelectorAll('.heure-nom-prevision');
 const tempPourH = document.querySelectorAll('.heure-prevision-valeur');
-
 const jour = document.querySelectorAll('.jour-prevision-nom');
 const tempPourJ = document.querySelectorAll('.jour-prevision-temp');
+
+// Geolocalisation popup
 
 if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -77,5 +82,17 @@ function callAPI(long, lat) {
             tempPourJ[m].innerText =
             `${Math.trunc(resultsAPI.daily[m + 1].temp.day)}°`; 
         }
+
+        // Icone dynamique:
+
+        if (heureActuelle >= 6 && heureActuelle < 21) {
+            imgIcon.src = `assets/day/${resultsAPI.current.weather[0].icon}.svg`;
+        } else {
+            imgIcon.src = `assets/night/${resultsAPI.current.weather[0].icon}.svg`;
+        }
+
+        // Loading animation:
+
+        loadingContainer.classList.add('vanish')
     })
 }
