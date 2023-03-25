@@ -1,20 +1,40 @@
 import { useState, useEffect } from 'react';
+import Loader from './Loader';
 
 const GeoApi = () => {
+  
+  const [locationObject, setLocationObject] = useState({})
+  const [isLoading, setIsLoading] = useState(true);
+  const apiKey = process.env.REACT_APP_API_KEY
+  
+  const callAPI = (long, lat) => {
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely&units=metric&lang=fr&appid=${apiKey}`)
+    .then(resp => resp.json())
+    .then(data => { 
+      setLocationObject(data);
+      setIsLoading(false);
+    })
+    .catch(error => {
+      console.log(error);
+      setIsLoading(false);
+    });
+  }
+  console.log("My coordinates: ", locationObject)
 
-  const [resApi, setResApi] = useState([])
-
-    const apiKey = process.env.REACT_APP_API_KEY
-
+  
     useEffect(() => {
-      const callAPI = (long, lat) => {
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely&units=metric&lang=fr&appid=${apiKey}`)
-        .then(resp => resp.json())
-        .then(data => console.log(data))
-      }
-    
+        if(navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(position => {
+              let long = position.coords.longitude;
+              let lat = position.coords.latitude;
+              callAPI(long, lat);
+          }, () => { alert(`Your browser geolocation is turned off. Turned it on to access the weather application!`)})
+        } 
     }, [])
 
+    if (isLoading) {
+      return <Loader isloaded={!isLoading} />
+    }
 
   return (
     <>
@@ -22,12 +42,12 @@ const GeoApi = () => {
       <div className="bloc-logo-info">
          <div className="bloc-logo">
             <img src="" className="logo-meteo" 
-            alt="logo du temps qu'il fait" />
+            alt="logo of the weather" />
          </div>
          <div className="bloc-info">
-            <p className="temps"></p>
-            <p className="temperature"></p>
-            <p className="localisation"></p>
+            <p className="temps">{locationObject.current.weather[0].description}</p>
+            <p className="temperature">{Math.trunc(locationObject.current.temp)}°</p>
+            <p className="localisation">{locationObject.timezone}</p>
          </div>
       </div> 
     </>
