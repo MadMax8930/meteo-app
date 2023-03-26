@@ -19,7 +19,6 @@
                 <feMergeNode in="SourceGraphic"/> 
             </feMerge>
         </filter>  
-        <link href="../../svg.css" rel="stylesheet" type="text/css"/>
     </defs>
     <g filter="url(#blur)" id="cloudy-night-3">
         <g transform="translate(20,10)">
