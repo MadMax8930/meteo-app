@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import i04n from "./assets/night/i04n.svg" 
+import i01n from "./assets/night/i01n.svg";
+import i02n from "./assets/night/i02n.svg";
+import i03n from "./assets/night/i03n.svg";  
+import i04n from "./assets/night/i04n.svg";    
 
 const ImgSvg = ({dataApi, curHour}) => {
 
@@ -24,7 +27,7 @@ const ImgSvg = ({dataApi, curHour}) => {
       <div className="bloc-logo">
         {console.log("icon", icon)}
         {icon && (
-            <img src={getIconPath(icon) || i04n} className="logo-meteo" alt="logo of the weather" />
+            <img src={i04n} className="logo-meteo" alt="logo of the weather" />
         )}
       </div>
     </>
