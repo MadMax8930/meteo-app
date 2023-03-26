@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import i04n from "./assets/night/i04n.svg" 
 
 const ImgSvg = ({dataApi, curHour}) => {
 
@@ -9,34 +9,22 @@ const ImgSvg = ({dataApi, curHour}) => {
     setIcon(dataApi.current.weather[0].icon);
   }, [dataApi]);
 
-  const importIcon = async (folder, file) => {
-    try {
-      const module = await import(`./assets/${folder}/${file}.svg`);
-      return module.default;
-    } catch (err) {
-      console.error(`Failed to load SVG icon ${file} located in the ${folder} folder : ${err}`);
+  const getIconPath = async (iconName) => {
+    if (curHour >= 6 && curHour < 18) {
+      const path = await import(`./assets/day/${iconName}.svg`);
+      return path.default;
+    } else {
+      const path = await import(`./assets/night/${iconName}.svg`);
+      return path.default;
     }
-  };
-
-  const getIconSrc = async () => {
-    const isDaytime = curHour >= 6 && curHour < 18;
-    const importedIcon = isDaytime ? await importIcon('day', icon) : await importIcon('night', icon);;
-
-    if (!importedIcon) {
-      return null;
-    }
-
-
-  console.log(`Successfully imported ${icon}.svg`);
-
-    return importedIcon;
-  };
+  }
 
   return (
     <>
       <div className="bloc-logo">
+        {console.log("icon", icon)}
         {icon && (
-          <img src={getIconSrc()} className="logo-meteo" alt="logo of the weather" />
+            <img src={getIconPath(icon) || i04n} className="logo-meteo" alt="logo of the weather" />
         )}
       </div>
     </>
