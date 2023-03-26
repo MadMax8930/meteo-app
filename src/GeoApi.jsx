@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import Loader from './Loader';
+import ImgSvg from './ImgSvg';
 
 const GeoApi = () => {
   
   const [locationObject, setLocationObject] = useState({})
   const [isLoading, setIsLoading] = useState(true);
+  
+  const currentHour = new Date().getHours();
+  
   const apiKey = process.env.REACT_APP_API_KEY
   
   const callAPI = (long, lat) => {
@@ -38,12 +42,9 @@ const GeoApi = () => {
 
   return (
     <>
-      <h1>Meteo application</h1>
+      <h1>Max's meteo application</h1>
       <div className="bloc-logo-info">
-         <div className="bloc-logo">
-            <img src="" className="logo-meteo" 
-            alt="logo of the weather" />
-         </div>
+         <ImgSvg dataApi={locationObject} curHour={currentHour} />
          <div className="bloc-info">
             <p className="temps">{locationObject.current.weather[0].description}</p>
             <p className="temperature">{Math.trunc(locationObject.current.temp)}°</p>
