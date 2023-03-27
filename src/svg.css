@@ -1,6 +1,6 @@
   /* MOON */
 
-  @keyframes am-weather-moon {
+  /* @keyframes am-weather-moon {
     0% {
       -webkit-transform: rotate(0deg);
          -moz-transform: rotate(0deg);
@@ -111,10 +111,10 @@
         -ms-animation-iteration-count: 1;
             animation-iteration-count: 1;
   }
-  
+   */
   /* CLOUDS */
 
-  @keyframes am-weather-cloud-1 {
+  /* @keyframes am-weather-cloud-1 {
     0% {
       -webkit-transform: translate(-5px,0px);
          -moz-transform: translate(-5px,0px);
@@ -189,10 +189,10 @@
        -moz-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
   }
-  
+   */
   /* SUN */
 
-  @keyframes am-weather-sun {
+  /* @keyframes am-weather-sun {
     0% {
       -webkit-transform: rotate(0deg);
          -moz-transform: rotate(0deg);
@@ -261,11 +261,11 @@
        -moz-animation-iteration-count: infinite;
         -ms-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
-  }
+  } */
 
   /* RAIN */
 
-@keyframes am-weather-rain {
+/* @keyframes am-weather-rain {
     0% {
       stroke-dashoffset: 0;
     }
@@ -315,11 +315,11 @@
        -moz-animation-iteration-count: infinite;
         -ms-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
-  }
+  } */
 
   /* STROKE */
 
-@keyframes am-weather-stroke {
+/* @keyframes am-weather-stroke {
     0% {
       -webkit-transform: translate(0.0px,0.0px);
          -moz-transform: translate(0.0px,0.0px);
@@ -466,11 +466,11 @@
     -webkit-animation-iteration-count: infinite;
        -moz-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
-  }
+  } */
 
 /* SNOW */
 
-@keyframes am-weather-snow {
+/* @keyframes am-weather-snow {
     0% {
       -webkit-transform: translateX(0) translateY(0);
          -moz-transform: translateX(0) translateY(0);
@@ -593,13 +593,13 @@
        -moz-animation-iteration-count: infinite;
         -ms-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
-  }
+  } */
 
   /* EASING */
   
-.am-weather-easing-ease-in-out {
+/* .am-weather-easing-ease-in-out {
     -webkit-animation-timing-function: ease-in-out;
        -moz-animation-timing-function: ease-in-out;
         -ms-animation-timing-function: ease-in-out;
             animation-timing-function: ease-in-out;
-  }
+  } */

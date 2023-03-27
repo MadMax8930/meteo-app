@@ -1,4 +1,3 @@
-import './svg.css';
 import {default as i01d} from "./assets/day/i01d.svg";
 import {default as i02d} from "./assets/day/i02d.svg";
 import {default as i03d} from "./assets/day/i03d.svg";
@@ -8,7 +7,7 @@ import {default as i10d} from "./assets/day/i10d.svg";
 import {default as i11d} from "./assets/day/i11d.svg";
 import {default as i13d} from "./assets/day/i13d.svg";
 import {default as i50d} from "./assets/day/i50d.svg";
-
+// import './svg.css';
 import {default as i01n} from "./assets/night/i01n.svg";
 import {default as i02n} from "./assets/night/i02n.svg";
 import {default as i03n} from "./assets/night/i03n.svg";
