@@ -1,65 +1,21 @@
 const HourCell = ({dataApi, curHour}) => {
 
-   const hour = document.querySelectorAll('.heure-nom-prevision');
-   const tempForHour = document.querySelectorAll('.heure-prevision-valeur');
+  const hourTempArr = []
 
-    // Hours, by three:
+  // Temperatures every three hours of the current day:
 
-    for(let i = 0; i < hour.length; i++) {
-
-        let hourIncr = curHour + i * 3; 
-
-        if(hourIncr>24) {
-            hour[i].innerText = `${hourIncr - 24} h`;
-        } else if (hourIncr === 24) {
-            hour[i].innerText = "00 h";
-        } else { 
-            hour[i].innerText = `${hourIncr} h`;
-        }
+    for(let i = 0; i < 7; i++) {
+        const hourIncr = curHour + i * 3; 
+        const hourByThree = hourIncr > 24 ? `${hourIncr - 24} h` : hourIncr === 24 ? "00 h" : `${hourIncr} h`;
+        const tempByThree = Math.trunc(dataApi.hourly[i * 3].temp)
+        hourTempArr.push(
+            <div className="bloc-h" key={i}>
+                <p className="heure-nom-prevision">{hourByThree}</p>
+                <p className="heure-prevision-valeur">{tempByThree}°</p>
+            </div>
+        );
     }
-
-    // Temperatures, by three:
-
-    for(let j = 0; j < tempForHour.length; j++) {
-
-        tempForHour[j].innerText = 
-        `${Math.trunc(dataApi.hourly[j * 3].temp)}°`;
-    }
-
-  return (
-    <div className="heure-prevision-bloc">
-
-        <div className="bloc-h">
-            <p className="heure-nom-prevision"></p>
-            <p className="heure-prevision-valeur"></p>
-        </div>
-        <div className="bloc-h">
-            <p className="heure-nom-prevision"></p>
-            <p className="heure-prevision-valeur"></p>
-        </div>
-        <div className="bloc-h">
-            <p className="heure-nom-prevision"></p>
-            <p className="heure-prevision-valeur"></p>
-        </div>
-        <div className="bloc-h">
-            <p className="heure-nom-prevision"></p>
-            <p className="heure-prevision-valeur"></p>
-        </div>
-        <div className="bloc-h">
-            <p className="heure-nom-prevision"></p>
-            <p className="heure-prevision-valeur"></p>
-        </div>
-        <div className="bloc-h">
-            <p className="heure-nom-prevision"></p>
-            <p className="heure-prevision-valeur"></p>
-        </div>
-        <div className="bloc-h">
-            <p className="heure-nom-prevision"></p>
-            <p className="heure-prevision-valeur"></p>
-        </div>
-
-   </div> 
-  )
+    return <div className="heure-prevision-bloc">{hourTempArr}</div>
 }
 
 export default HourCell;

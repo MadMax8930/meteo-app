@@ -1,5 +1,4 @@
 const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-// Time management
 
 let today = new Date();
 let options = {weekday:'long'};
