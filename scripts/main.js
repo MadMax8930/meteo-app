@@ -2,7 +2,7 @@ import tabJourEnOrdre from "./utility/gestionTemps.js";
 
 // API: openweathermap.org
 
-const API_KEY = 'e4d50bc9123c2306a553377e8fe05b98';
+const API_KEY = process.env.API;
 let resultsAPI;
 
 // HTML Elements
